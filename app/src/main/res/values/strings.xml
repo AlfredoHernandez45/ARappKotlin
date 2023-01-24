@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">ARappKotlin</string>
+    <string name="scroll">Scroll</string>
+    <string name="encabezado">Encabezado</string>
+
+<!--    IMAGE-->
+    <string name="manati">Manati</string>
+    <string name="lazaro">Lazaro</string>
+    <string name="monumento_a_la_mujer">Monumento_a_la_Mujer</string>
+    <string name="mini_manati">Manati</string>
+    <string name="mini_lazaro">Lazaro</string>
+    <string name="mini_monumento_a_la_mujer">Monumento_a_la_Mujer</string>
+
+    <string name="monumento_del_manati">Monumento del Manati</string>
+    <string name="monumento_lazaro_cardenas">Monumento Lazaro Cardenas</string>
+    <string name="monumento_mujer">Monumento a la Mujer</string>
+
+<!--    TEXT Descripcion-->
+    <string name="manati_desc">Esta atracción turística se encuentra frente a la bella Bahía de Chetumal, entre el Centro Internacional de Convenciones y la Universidad de Quintana Roo (UQROO), fue inaugurada en 1996 con el objetivo de darle realce al Boulevard Bahía y conmemorar a los Manatíes, los amigables mamíferos acuáticos que abundan en la Bahía, la cual fue decretada como santuario del Manatí.</string>
+
+    <string name="lazaro_desc">Esta obra artística se encuentra en la glorieta del cruce del boulevard Bahía y la calzada Veracruz en la ciudad de Chetumal, fue erigida en honor a Lázaro Cárdenas, presidente de México en los años 1934-1940, quien se caracterizó por realizar importantes acciones de gobierno como la reforma agraria, la creación de los ejidos, así como la reincorporación de Quintana Roo como entidad federativa el 16 de enero de 1935, hecho por el cual se convirtió en personaje fundamental en la historia de Quintana Roo.</string>
+
+    <string name="mujer_desc">Monumento inaugurado durante el gobierno de Aaron Merino Fernández (1958 - 1964), obra de artista H. Juárez. La estatura se encuentra esculpida sobre un cerro de prismas y caracteriza a la mujer chetumaleña aludiendo el traje típico que representa al estado de Quintana Roo, con imágenes representativas de la cultura Maya. Representando a la mujer quintanarroense, Ramon Valdiosera Berman fue quien diseño el traje inspirado en las llamadas "Mujeres de la isla Jaina" y creado por encargo de Carmen Ochoa de Merino.</string>
+
+</resources>

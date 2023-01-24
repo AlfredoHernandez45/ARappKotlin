@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#efefef"
+    tools:context=".menu_Lazaro">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/encabezado"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/encabezado" />
+
+    <HorizontalScrollView
+        android:id="@+id/barra"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/scroll"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:orientation="horizontal"
+            android:background="#8000FF">
+
+            <ImageButton
+                android:id="@+id/mini_manati"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/manati"
+                android:scaleType="centerInside"
+                android:visibility="visible"
+                app:srcCompat="@drawable/santuario_manati"
+                android:layout_marginStart="40dp"/>
+
+            <ImageButton
+                android:id="@+id/mini_lazaro"
+                android:layout_width="90dp"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/lazaro"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/lazaro_cardenaz"
+                android:layout_marginStart="40dp"/>
+
+            <ImageButton
+                android:id="@+id/mini_mujer"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/monumento_a_la_mujer"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/monumento_a_mujer_la_chetumalena"
+                android:layout_marginStart="40dp"/>
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <!--MANATI-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="50dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/barra">
+
+        <ImageView
+            android:id="@+id/lazaro"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:contentDescription="@string/manati"
+            app:srcCompat="@drawable/lazaro_cardenaz" />
+
+        <TextView
+            android:id="@+id/title_manati"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="20dp"
+            android:text="@string/monumento_lazaro_cardenas"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="22sp" />
+
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txt_manati"
+                android:layout_width="300dp"
+                android:layout_height="match_parent"
+                android:justificationMode="inter_word"
+                android:text="@string/lazaro_desc"
+                android:textColor="@color/black"
+                android:textSize="17sp" />
+        </ScrollView>
+    </LinearLayout>
+
+</LinearLayout>

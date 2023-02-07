@@ -11,6 +11,9 @@
     <!-- Here it is checking for AR feature in phone camera -->
     <uses-feature android:name="android.hardware.camera.ar" android:required="true" />
 
+    <!-- Permiso para que mi App use Internet -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -21,8 +24,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ARappKotlin"
         tools:targetApi="31">
+<!--        <activity-->
+<!--            android:name=".menu_Manati"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+
+<!--        </activity>-->
         <activity
-            android:name=".menu_Manati"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,7 +43,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
         </activity>
+
+<!--        <activity-->
+<!--            android:name=".Activity"-->
+<!--            android:configChanges="orientation|screenSize"-->
+<!--            android:exported="true"-->
+<!--            android:label="@string/app_name"-->
+<!--            android:screenOrientation="locked">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
+
         <activity
             android:name=".Manati"
             android:exported="false" />
@@ -46,6 +75,11 @@
         <activity
             android:name=".menu_Mujer"
             android:exported="false" />
+        <activity
+            android:name=".VistaInfoModel"
+            android:exported="false" />
+        <activity android:name=".Activity_Modelos"
+            android:exported="false"/>
 
         <!--
          ARCore need to be installed, as the app does not include any non-AR features.
@@ -53,6 +87,6 @@
         -->
         <meta-data android:name="com.google.ar.core" android:value="required" />
 
-    </application> S
+    </application>
 
 </manifest>

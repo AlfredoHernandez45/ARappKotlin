@@ -1,4 +1,4 @@
-package com.jose.arappkotlin
+package com.jose.arappkotlin.version1
 
 import android.app.Activity
 import android.app.ActivityManager
@@ -16,9 +16,10 @@ import com.google.ar.sceneform.AnchorNode
 import com.google.ar.sceneform.rendering.ModelRenderable
 import com.google.ar.sceneform.ux.ArFragment
 import com.google.ar.sceneform.ux.TransformableNode
+import com.jose.arappkotlin.R
 import java.util.*
 
-class Lazaro : AppCompatActivity() {
+class Mujer : AppCompatActivity() {
 
     // object of ArFragment Class
     private var arCam: ArFragment? = null
@@ -60,7 +61,7 @@ class Lazaro : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_lazaro)
+        setContentView(R.layout.activity_leona)
         supportActionBar?.hide()
 
         if (checkSystemSupport(this)) {
@@ -74,7 +75,7 @@ class Lazaro : AppCompatActivity() {
                 if (clickNo == 1) {
                     val anchor = hitResult.createAnchor()
                     ModelRenderable.builder()
-                        .setSource(this, R.raw.lazaro_cardenas_v4)
+                        .setSource(this, R.raw.leona_vicario_v4)
                         .setIsFilamentGltf(true)
                         .build()
                         .thenAccept { modelRenderable: ModelRenderable ->

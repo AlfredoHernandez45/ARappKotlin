@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="#efefef"
-    tools:context=".menu_Lazaro">
+    tools:context=".version1.menu_Lazaro">
 
     <ImageView
         android:id="@+id/imageView"

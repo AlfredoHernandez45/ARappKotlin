@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="#efefef"
-    tools:context=".menu_Manati">
+    tools:context=".version1.menu_Manati">
 
     <ImageView
         android:id="@+id/imageView"

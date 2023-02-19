@@ -1,31 +1,17 @@
-package com.jose.arappkotlin
+package com.jose.arappkotlin.version1
 
-import android.app.Activity
-import android.app.ActivityManager
-import android.app.AlertDialog
-import android.content.Context
 import android.content.Intent
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MotionEvent
-import android.widget.ImageButton
 import android.widget.ImageView
-import android.widget.Toast
-import com.google.ar.core.Anchor
-import com.google.ar.core.HitResult
-import com.google.ar.core.Plane
-import com.google.ar.sceneform.AnchorNode
-import com.google.ar.sceneform.rendering.ModelRenderable
-import com.google.ar.sceneform.ux.ArFragment
-import com.google.ar.sceneform.ux.TransformableNode
-import java.util.*
+import com.jose.arappkotlin.R
 
-class menu_Lazaro : AppCompatActivity() {
+class menu_Mujer : AppCompatActivity() {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_vista_lazaro)
+        setContentView(R.layout.activity_vista_mujer)
         supportActionBar?.hide()
 
         val lazaro: ImageView = findViewById(R.id.mini_lazaro)
@@ -45,12 +31,11 @@ class menu_Lazaro : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val btn_lazaro: ImageView = findViewById(R.id.lazaro)
+        val btn_lazaro: ImageView = findViewById(R.id.mujer)
 
         btn_lazaro.setOnClickListener{
-            val intent: Intent = Intent(this, Lazaro::class.java)
+            val intent: Intent = Intent(this, Mujer::class.java)
             startActivity(intent)
         }
     }
-
 }

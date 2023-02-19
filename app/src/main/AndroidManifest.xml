@@ -24,6 +24,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ARappKotlin"
         tools:targetApi="31">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
 <!--        <activity-->
 <!--            android:name=".menu_Manati"-->
 <!--            android:exported="true">-->
@@ -61,24 +64,28 @@
 <!--        </activity>-->
 
         <activity
-            android:name=".Manati"
+            android:name=".version1.Manati"
             android:exported="false" />
         <activity
-            android:name=".Mujer"
+            android:name=".version1.Mujer"
             android:exported="false" />
         <activity
-            android:name=".Lazaro"
+            android:name=".version1.Lazaro"
             android:exported="false" />
         <activity
-            android:name=".menu_Lazaro"
+            android:name=".version1.menu_Lazaro"
             android:exported="false" />
         <activity
-            android:name=".menu_Mujer"
+            android:name=".version1.menu_Mujer"
             android:exported="false" />
         <activity
             android:name=".VistaInfoModel"
             android:exported="false" />
-        <activity android:name=".Activity_Modelos"
+        <activity
+            android:name=".Activity_Modelos"
+            android:exported="false"/>
+        <activity
+            android:name=".Google_Map"
             android:exported="false"/>
 
         <!--

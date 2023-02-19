@@ -28,7 +28,8 @@ class MainActivity : AppCompatActivity() {
                     nombre = jsonObject.getString("nombre"),
                     descripcion = jsonObject.getString("descripcion"),
                     imagen = jsonObject.getString("imagen"),
-                    modelo = jsonObject.getString("modelo")
+                    modelo = jsonObject.getString("modelo"),
+                    coordenadas = jsonObject.getString("coordenadas")
                 )
                 modelos.add(modelo)
             }
@@ -41,4 +42,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun validacionVersiones() {}
+
+
 }

@@ -27,6 +27,7 @@ class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                 intent.putExtra("descripcion", modelo.descripcion)
                 intent.putExtra("imagen", modelo.imagen)
                 intent.putExtra("modelo", modelo.modelo)
+                intent.putExtra("coordenadas", modelo.coordenadas)
                 itemView.context.startActivity(intent)
             }
         }catch (e: Exception) {

@@ -1,10 +1,11 @@
-package com.jose.arappkotlin
+package com.jose.arappkotlin.version1
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import com.jose.arappkotlin.R
 
 class Menu : AppCompatActivity() {
 

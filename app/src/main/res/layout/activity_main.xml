@@ -14,7 +14,8 @@
         android:layout_height="70dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo_tec" />
+        app:srcCompat="@drawable/logo_tec"
+        android:contentDescription="@string/encabezado" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"

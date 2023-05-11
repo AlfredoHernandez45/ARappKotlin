@@ -12,24 +12,16 @@
         android:layout_height="200dp"
         android:layout_margin="5dp"
         app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="5dp"
-        >
+        app:cardCornerRadius="5dp">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/logo">
-
-            <!-- Contenedor de la Imagen -->
-            <ImageView
-                android:id="@+id/img"
-                android:layout_width="170dp"
-                android:layout_height="180dp"
-                android:layout_margin="10dp"
-                android:scaleType="fitXY" />
-
-        </LinearLayout>
+        <!-- Contenedor de la Imagen -->
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="170dp"
+            android:layout_height="180dp"
+            android:layout_margin="10dp"
+            android:scaleType="fitXY"
+            android:contentDescription="@string/img_monumento" />
 
     </androidx.cardview.widget.CardView>
 

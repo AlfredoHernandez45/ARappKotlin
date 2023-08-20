@@ -9,7 +9,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
         android:layout_width="190dp"
-        android:layout_height="200dp"
+        android:layout_height="250dp"
         android:layout_margin="5dp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="5dp">
@@ -22,6 +22,17 @@
             android:layout_margin="10dp"
             android:scaleType="fitXY"
             android:contentDescription="@string/img_monumento" />
+
+        <!-- Contenedor del título -->
+        <TextView
+            android:id="@+id/titulo"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="200dp"
+            android:text="titulo"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:layout_marginHorizontal="10dp"/>
 
     </androidx.cardview.widget.CardView>
 

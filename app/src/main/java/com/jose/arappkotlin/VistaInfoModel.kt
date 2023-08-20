@@ -9,6 +9,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
+/**
+ * Este esta encargado de obtener toda la información de los modelos y mostrarlo
+ * */
 class VistaInfoModel : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -13,7 +13,10 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import java.io.BufferedWriter
 import java.io.OutputStreamWriter
-
+/**
+ *  Actividad pricipal que se conecta con "activity_main" y se encarga de mostrar
+ *  todos los monumentos existentes
+ *  */
 
 class MainActivity : AppCompatActivity() {
 

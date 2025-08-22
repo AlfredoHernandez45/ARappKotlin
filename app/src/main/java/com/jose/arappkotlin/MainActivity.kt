@@ -1,35 +1,61 @@
 package com.jose.arappkotlin
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.Gson
 import org.json.JSONObject
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import java.io.BufferedWriter
-import java.io.OutputStreamWriter
-/**
- *  Actividad pricipal que se conecta con "activity_main" y se encarga de mostrar
- *  todos los monumentos existentes
- *  */
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
+    private val CAMERA_PERMISSION_REQUEST_CODE = 101
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         supportActionBar?.hide()
 
-        // Inicializa el RecyclerView
         recyclerView = findViewById(R.id.recyclerView)
 
+        // 1. Comprobar y solicitar permisos al iniciar
+        checkAndRequestPermissions()
+    }
+
+    private fun checkAndRequestPermissions() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+            != PackageManager.PERMISSION_GRANTED) {
+            // Permiso no concedido, solicitarlo.
+            ActivityCompat.requestPermissions(this,
+                arrayOf(Manifest.permission.CAMERA),
+                CAMERA_PERMISSION_REQUEST_CODE)
+        } else {
+            // Permiso ya concedido, configurar la UI.
+            setupRecyclerView()
+        }
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == CAMERA_PERMISSION_REQUEST_CODE) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permiso concedido por el usuario.
+                setupRecyclerView()
+            } else {
+                // Permiso denegado. Informar al usuario.
+                Toast.makeText(this, "El permiso de cámara es necesario para la función de Realidad Aumentada", Toast.LENGTH_LONG).show()
+                // Opcional: podrías deshabilitar botones o cerrar la app si es estrictamente necesaria.
+            }
+        }
+    }
+
+    private fun setupRecyclerView() {
         // Abre el archivo JSON "response3.json" que se encuentra en la carpeta "assets"
         val inputStream = assets.open("response3.json")
 
@@ -79,4 +105,3 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = GridLayoutManager(this,2)
     }
 }
-

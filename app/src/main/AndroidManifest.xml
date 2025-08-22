@@ -59,7 +59,7 @@
          ARCore need to be installed, as the app does not include any non-AR features.
         For an "AR Optional" app, specify "optional" instead of "required".
         -->
-        <meta-data android:name="com.google.ar.core" android:value="optional" />
+        <meta-data android:name="com.google.ar.core" android:value="required" />
 
     </application>
 

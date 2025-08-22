@@ -4,6 +4,7 @@
 
     <!-- Esto ayuda a permitir al usuario acceder a la cámara -->
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
 
     <!-- Esto ayuda a verificar una función específica en el hardware del teléfono, aquí está OpenGl ES versión 3 -->
     <uses-feature android:glEsVersion="0x00030000" android:required="true" />

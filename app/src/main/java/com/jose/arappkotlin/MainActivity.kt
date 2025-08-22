@@ -54,11 +54,11 @@ class MainActivity : AppCompatActivity() {
 
                 // Crea un objeto Modelo a partir de los valores en el objeto JSON actual
                 val modelo = Modelo(
-                    nombre = jsonObject.getString("nombre"),
-                    descripcion = jsonObject.getString("descripcion"),
-                    imagen = jsonObject.getString("imagen"),
-                    modelo = jsonObject.getString("modelo"),
-                    coordenadas = jsonObject.getString("coordenadas")
+                    nombre = jsonObject.optString("nombre"),
+                    descripcion = jsonObject.optString("descripcion"),
+                    imagen = jsonObject.optString("imagen"),
+                    modelo = jsonObject.optString("modelo"),
+                    coordenadas = jsonObject.optString("coordenadas")
                 )
 
                 // Agrega el objeto Modelo a la lista "modelos"

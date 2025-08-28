@@ -1,26 +1,23 @@
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
-}
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
+        mavenLocal()
         google()
         mavenCentral()
     }
 }
-rootProject.name = "ARappKotlin"
-include ':app'
+rootProject.name = "SceneView"
+include ':sceneview'
+include ':arsceneview'
 
-//this will add sceneformsrc folder into your project
-include ':sceneform'
-project(':sceneform').projectDir=new File('sceneformsrc/sceneform')
-
-//this will add sceneformux folder into your project
-include ':sceneformux'
-project(':sceneformux').projectDir=new File('sceneformux/ux')
-
-include ':app', ':arcore-cliente-java', 'sceneform.sdk.android'
+// Samples
+include ':samples:common'
+include ':samples:ar-augmented-image'
+include ':samples:ar-cloud-anchor'
+include ':samples:ar-model-viewer'
+include ':samples:ar-model-viewer-compose'
+include ':samples:ar-point-cloud'
+include ':samples:gltf-camera'
+include ':samples:model-viewer'
+include ':samples:model-viewer-compose'
+include ':samples:camera-manipulator-compose'

@@ -1,0 +1,55 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.jose.arappkotlin'
+    compileSdk 36
+
+    defaultConfig {
+        applicationId "com.jose.arappkotlin.sample" // Unique application ID for the sample
+        minSdk 24
+        targetSdk 36
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17 // Use Java 17 as per new project
+        targetCompatibility JavaVersion.VERSION_17 // Use Java 17 as per new project
+    }
+    kotlinOptions {
+        jvmTarget = '17' // Use JVM 17 as per new project
+    }
+}
+
+dependencies {
+    implementation 'androidx.core:core-ktx:1.16.0' // Updated version
+    implementation 'androidx.appcompat:appcompat:1.7.0' // Updated version
+    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    // SceneView and ARCore dependencies
+    implementation project(':sceneview') // Dependency on the main sceneview library
+    implementation project(':arsceneview') // Dependency on the arsceneview library
+
+    // Original project dependencies
+    implementation 'androidx.recyclerview:recyclerview:1.3.0-rc01'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.12.12'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.12.12'
+    implementation 'com.android.volley:volley:1.2.1'
+}

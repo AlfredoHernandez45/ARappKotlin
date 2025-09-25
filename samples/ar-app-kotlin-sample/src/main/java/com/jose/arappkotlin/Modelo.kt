@@ -1,11 +1,21 @@
+// Define el paquete al que pertenece esta clase.
 package com.jose.arappkotlin
 
-// Declara una clase de datos Modelo para representar objetos que contienen información sobre un modelo
+// Declara una "data class" llamada Modelo.
+// Las "data class" en Kotlin son clases concisas diseñadas específicamente para contener datos.
+// El compilador genera automáticamente métodos útiles como toString(), equals(), hashCode(), copy(), etc.
 data class Modelo(
-    val nombre: String,         // Representa el nombre del modelo
-    val descripcion: String,    // Representa la descripción del modelo
-    val imagen: String,         // Representa la ruta de la imagen asociada al modelo
-    val modelo: String,         // Representa la ruta del modelo 3D asociado al modelo
-    val coordenadas: String,    // Representa las coordenadas en las que se encuentra el modelo
-    val modelResourceId: Int    // Representa el ID del recurso del modelo 3D
+    // Propiedad inmutable para el nombre del modelo (ej. "Silla de oficina"). Se usará para mostrar en la lista.
+    val nombre: String,
+    // Propiedad para la descripción detallada del modelo.
+    val descripcion: String,
+    // Propiedad para la URL o el nombre del archivo de la imagen de vista previa del modelo.
+    val imagen: String,
+    // Propiedad para el nombre del archivo del modelo 3D (ej. "silla.glb").
+    val modelo: String,
+    // Propiedad para las coordenadas geográficas (latitud,longitud) asociadas a este modelo, guardadas como un String.
+    val coordenadas: String,
+    // Propiedad para el ID de recurso entero (ej. R.raw.silla) del modelo 3D.
+    // Este ID es crucial para poder cargarlo desde los recursos de la app en la escena de AR.
+    val modelResourceId: Int
 )

@@ -1,75 +1,90 @@
+// Define el paquete al que pertenece esta clase.
 package com.jose.arappkotlin
 
-import android.os.Bundle
-import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
-//import io.github.sceneview.ar.R // Explicit import for R class
+// Importa las clases necesarias de Android y Google Maps.
+import android.os.Bundle // Para manejar el estado de la actividad.
+import android.util.Log // Para registrar mensajes de depuración y error.
+import androidx.appcompat.app.AppCompatActivity // Clase base para actividades con barra de aplicaciones.
+import com.google.android.gms.maps.CameraUpdateFactory // Para crear actualizaciones de la cámara del mapa (mover, zoom, etc.).
+import com.google.android.gms.maps.GoogleMap // El objeto principal que representa el mapa.
+import com.google.android.gms.maps.OnMapReadyCallback // Interfaz para recibir una notificación cuando el mapa está listo.
+import com.google.android.gms.maps.SupportMapFragment // Un fragmento que muestra un mapa de Google.
+import com.google.android.gms.maps.model.LatLng // Representa una coordenada geográfica (latitud y longitud).
+import com.google.android.gms.maps.model.MarkerOptions // Para configurar las opciones de un marcador en el mapa.
 
-// Se define una clase llamada Google_Map que extiende la clase AppCompatActivity e implementa la interfaz OnMapReadyCallback
+// Se define una clase llamada Google_Map que hereda de AppCompatActivity e implementa la interfaz OnMapReadyCallback.
+// AppCompatActivity le da la funcionalidad de una pantalla de Android.
+// OnMapReadyCallback obliga a implementar el método onMapReady, que se llama cuando el mapa está listo.
 class Google_Map : AppCompatActivity(), OnMapReadyCallback {
 
-    // Se definen dos propiedades privadas de la clase
-    private lateinit var map: GoogleMap // Variable para almacenar una instancia de GoogleMap
-    private lateinit var coordenadas: String // Variable para almacenar las coordenadas del lugar que se va a mostrar en el mapa
+    // Declara una variable para el objeto GoogleMap. `lateinit` indica que se inicializará más tarde.
+    private lateinit var map: GoogleMap
+    // Declara una variable para almacenar las coordenadas (como texto) que se mostrarán en el mapa.
+    private lateinit var coordenadas: String
 
-    // Esta función se llama al crear la instancia de la actividad
+    // Esta función se llama al crear la instancia de la actividad.
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Llama a la implementación de la clase padre. Es obligatorio.
         super.onCreate(savedInstanceState)
 
-        // Se establece el layout de la actividad
+        // Establece el layout (la interfaz de usuario) desde el archivo XML.
         setContentView(R.layout.activity_google_map)
 
-        // Se oculta la barra de acción
+        // Oculta la barra de acción (la barra superior) para dar más espacio al mapa.
         supportActionBar?.hide()
 
-        // Se intenta obtener las coordenadas del lugar desde el Intent que inició la actividad
+        // Se intenta obtener las coordenadas del Intent que inició esta actividad.
         try {
+            // Recupera el string con la clave "coordenadas" del Intent.
             val coordenadas = intent.getStringExtra("coordenadas")
+            // Asigna el valor recuperado a la variable de la clase.
             this.coordenadas = coordenadas.toString()
+            // Llama a la función para configurar el fragmento del mapa.
             createFragment()
         } catch (e: Exception) {
+            // Si algo falla (ej. no se pasaron las coordenadas), se registra un error.
             Log.e("VistaInfoModel", "Error en VistaInfoModelo: $e")
         }
     }
 
-    // Esta función se utiliza para crear el fragmento de mapa y mostrarlo en la actividad
+    // Esta función se utiliza para crear el fragmento de mapa y mostrarlo en la actividad.
     private fun createFragment() {
-        // Se busca el fragmento de mapa en el layout de la actividad y se obtiene una instancia de SupportMapFragment
+        // Busca el fragmento de mapa en el layout y lo convierte a SupportMapFragment.
         val mapFragment = supportFragmentManager.findFragmentById(R.id.mapa) as SupportMapFragment
-        // Se llama a la función getMapAsync() del fragmento para notificar cuando el mapa está listo para ser utilizado
+        // Registra un callback para notificar cuando el mapa esté listo para ser utilizado.
+        // `this` indica que el callback (onMapReady) está en esta misma clase.
         mapFragment.getMapAsync(this)
     }
 
-    // Esta función se llama cuando el mapa está listo para ser utilizado
+    // Esta función (callback) se llama cuando el mapa está listo para ser utilizado.
     override fun onMapReady(googleMap: GoogleMap) {
-        // Se guarda una referencia a la instancia de GoogleMap en la propiedad map
+        // Guarda una referencia a la instancia de GoogleMap en la propiedad `map`.
         map = googleMap
-        // Se llama a la función createMarker() para agregar un marcador en el mapa
+        // Llama a la función para agregar un marcador en el mapa ya cargado.
         createMarker()
     }
 
-    // Esta función se utiliza para crear un marcador en el mapa
+    // Esta función se utiliza para crear un marcador en el mapa.
     private fun createMarker() {
-        // Se dividen las coordenadas en dos valores: latitud y longitud
+        // Divide el string de coordenadas (ej: "19.43,-99.13") en un array usando la coma como separador.
         val coordenadasArray = coordenadas.split(",")
+        // Convierte la primera parte (latitud) a un número de tipo Double.
         val latitude = coordenadasArray[0].toDouble()
+        // Convierte la segunda parte (longitud) a un número de tipo Double.
         val longitude = coordenadasArray[1].toDouble()
-        // Se crea un objeto LatLng con las coordenadas
-        val coordenadas = LatLng(latitude, longitude)
-        // Se crea un objeto MarkerOptions con la posición del marcador
-        val marker: MarkerOptions = MarkerOptions().position(coordenadas)
-        // Se agrega el marcador al mapa
+        // Crea un objeto LatLng con las coordenadas numéricas.
+        val coordenadasLatLng = LatLng(latitude, longitude)
+        // Crea un objeto MarkerOptions para definir la posición del marcador.
+        val marker: MarkerOptions = MarkerOptions().position(coordenadasLatLng)
+        // Agrega el marcador al mapa.
         map.addMarker(marker)
-        // Se anima la cámara para que muestre la ubicación del marcador
+        // Anima la cámara para que se mueva y haga zoom a la ubicación del marcador.
         map.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(coordenadas, 18f),
+            // Crea una actualización de cámara para centrarla en las coordenadas con un nivel de zoom de 18f.
+            CameraUpdateFactory.newLatLngZoom(coordenadasLatLng, 18f),
+            // Duración de la animación en milisegundos (4 segundos).
             4000,
+            // Callback opcional para cuando la animación termina (en este caso, ninguno).
             null
         )
     }

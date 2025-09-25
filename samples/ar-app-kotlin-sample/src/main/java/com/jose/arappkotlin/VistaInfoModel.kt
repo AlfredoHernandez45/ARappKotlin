@@ -1,63 +1,95 @@
+// Define el paquete al que pertenece esta clase.
 package com.jose.arappkotlin
 
-import android.content.Intent
-import android.graphics.BitmapFactory
-import android.os.Bundle
-import android.util.Log
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
-//import io.github.sceneview.ar.R // Explicit import for R class
+// Importa las clases necesarias del framework de Android.
+import android.content.Intent // Para crear "intenciones" que permiten iniciar otras actividades.
+import android.graphics.BitmapFactory // Para decodificar archivos de imagen en objetos Bitmap.
+import android.os.Bundle // Para manejar el estado de la actividad y recibir datos.
+import android.util.Log // Para escribir mensajes en el log del sistema (útil para depurar).
+import android.widget.Button // Para el componente de botón.
+import android.widget.ImageView // Para mostrar imágenes.
+import android.widget.TextView // Para mostrar texto.
+import androidx.appcompat.app.AppCompatActivity // Clase base para actividades con barra de aplicaciones.
+import android.widget.Toast
 
-/**
- * Este esta encargado de obtener toda la información de los modelos y mostrarlo
- * */
+// Define la clase para la pantalla de detalles del modelo. Hereda de AppCompatActivity.
 class VistaInfoModel : AppCompatActivity() {
 
+    // Este método se llama cuando la actividad se crea por primera vez.
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Llama a la implementación de la clase padre. Es obligatorio.
         super.onCreate(savedInstanceState)
+        // Establece el layout (la interfaz de usuario) desde el archivo XML `activity_vistas.xml`.
         setContentView(R.layout.activity_vistas)
+        // Oculta la barra de acción (la barra superior) para tener más espacio.
         supportActionBar?.hide()
 
-        //Se obtienen los datos que se pasan a esta actividad a través de un Intent
+        // --- Recibir datos de la actividad anterior ---
+        // Se obtienen los datos que se pasaron a esta actividad a través del Intent.
         val nombre = intent.getStringExtra("nombre")
         val descripcion = intent.getStringExtra("descripcion")
         val imagen = intent.getStringExtra("imagen")
-        val modelo = intent.getStringExtra("modelo")
+        val modelo = intent.getStringExtra("modelo") // Aunque se recibe, no se usa directamente en este código.
         val coordenadas = intent.getStringExtra("coordenadas")
+        val modelResourceId = intent.getIntExtra("modelResourceId", 0) // Se recibe el ID del recurso del modelo.
 
-        //Se asignan las vistas del layout a las variables correspondientes
+        // --- Vincular vistas del layout con variables ---
+        // Se asignan las vistas del layout a las variables correspondientes para poder manipularlas.
         val imageView: ImageView = findViewById(R.id.imgMonument)
         val textTitulo: TextView = findViewById(R.id.titulo)
         val textDescrip: TextView = findViewById(R.id.descripcion)
         val btnMap: Button = findViewById(R.id.mapa)
 
+        // Se usa un bloque try-catch para manejar posibles errores, como no encontrar un archivo de imagen.
         try {
-            //Se muestra la imagen correspondiente en el ImageView a partir del archivo almacenado en assets
+            // --- Poblar las vistas con los datos recibidos ---
+            // Mostrar la imagen desde la carpeta `assets`.
             val imageStream = assets.open("images/$imagen")
             val bitmap = BitmapFactory.decodeStream(imageStream)
             imageView.setImageBitmap(bitmap)
 
-            //Se asignan los valores de nombre y descripción a los TextView correspondientes
+            // Mostrar el nombre y la descripción en los TextViews correspondientes.
             textTitulo.text = nombre
             textDescrip.text = descripcion
 
-            //Se abre la actividad Activity_Modelos cuando se hace click en la imagen
+            // --- Configurar acciones de los botones y vistas ---
+            val modelFileName = intent.getStringExtra("modelFileName")
+
+            // Configura el listener para que al hacer clic en la imagen, se abra la vista de Realidad Aumentada.
+            imageView.setOnClickListener {
+                val modelFileName = intent.getStringExtra("modelFileName")
+                val resourceId = resources.getIdentifier(modelFileName?.substringBefore("."), "raw", packageName)
+
+                if (resourceId != null && resourceId != 0) {
+                    // Solo crea un Intent si el archivo existe
+                    val intent = Intent(this, ActivityModelos::class.java)
+                    intent.putExtra("modelFileName", modelFileName)
+                    Toast.makeText(this, "Cargando modelo 3D...", Toast.LENGTH_SHORT).show()
+                    startActivity(intent)
+                } else {
+                    Toast.makeText(this, "El modelo 3D no se encontró", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            /* Bloque de código comentado que parece ser una versión anterior de la misma funcionalidad.
             imageView.setOnClickListener {
                 val intent = Intent(this, ActivityModelos::class.java)
                 intent.putExtra("modelo", modelo)
                 startActivity(intent)
-            }
+            }*/
 
-            //Se abre la actividad Google_Map cuando se hace click en el botón
+            // Configura el listener para que al hacer clic en el botón del mapa, se abra Google Maps.
             btnMap.setOnClickListener {
+                // Crea un Intent para iniciar la actividad `Google_Map`.
                 val intent = Intent(this, Google_Map::class.java)
+                // Añade las coordenadas (como String) al Intent para que la actividad del mapa sepa qué ubicación mostrar.
                 intent.putExtra("coordenadas", coordenadas)
+                // Inicia la actividad del mapa.
                 startActivity(intent)
             }
 
-        }catch (e: Exception) {
+        } catch (e: Exception) {
+            // Si ocurre cualquier error en el bloque `try`, se registra en el log para facilitar la depuración.
             Log.e("VistaInfoModel", "Error en VistaInfoModelo: $e")
         }
     }

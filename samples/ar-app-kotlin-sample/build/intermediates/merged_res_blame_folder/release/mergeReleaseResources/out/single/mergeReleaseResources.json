@@ -44,20 +44,12 @@
         "source": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-main-61:/mipmap-xxhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.jose.arappkotlin.ar-app-kotlin-sample-release-60:/drawable_lazaro_cardenaz.jpg.flat",
-        "source": "com.jose.arappkotlin.ar-app-kotlin-sample-main-61:/drawable/lazaro_cardenaz.jpg"
-    },
-    {
         "merged": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-release-60:/raw_response3.json.flat",
         "source": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-main-61:/raw/response3.json"
     },
     {
         "merged": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-release-60:/layout_activity_vistas.xml.flat",
         "source": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-main-61:/layout/activity_vistas.xml"
-    },
-    {
-        "merged": "com.jose.arappkotlin.ar-app-kotlin-sample-release-60:/drawable_monumento_mujer.jpg.flat",
-        "source": "com.jose.arappkotlin.ar-app-kotlin-sample-main-61:/drawable/monumento_mujer.jpg"
     },
     {
         "merged": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-release-60:/layout_activity_modelos.xml.flat",
@@ -72,12 +64,16 @@
         "source": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-main-61:/raw/manati_4.glb"
     },
     {
-        "merged": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-release-60:/raw_lazaro_cardenas_v4.glb.flat",
-        "source": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-main-61:/raw/lazaro_cardenas_v4.glb"
+        "merged": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-release-60:/drawable_monumento_mujer.jpg.flat",
+        "source": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-main-61:/drawable/monumento_mujer.jpg"
     },
     {
-        "merged": "com.jose.arappkotlin.ar-app-kotlin-sample-release-60:/drawable_santuario_manati.png.flat",
-        "source": "com.jose.arappkotlin.ar-app-kotlin-sample-main-61:/drawable/santuario_manati.png"
+        "merged": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-release-60:/drawable_lazaro_cardenaz.jpg.flat",
+        "source": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-main-61:/drawable/lazaro_cardenaz.jpg"
+    },
+    {
+        "merged": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-release-60:/raw_lazaro_cardenas_v4.glb.flat",
+        "source": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-main-61:/raw/lazaro_cardenas_v4.glb"
     },
     {
         "merged": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-release-60:/mipmap-xxhdpi_ico.png.flat",
@@ -94,6 +90,10 @@
     {
         "merged": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-release-60:/drawable_monumento_a_mujer_la_chetumalena.jpg.flat",
         "source": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-main-61:/drawable/monumento_a_mujer_la_chetumalena.jpg"
+    },
+    {
+        "merged": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-release-60:/drawable_santuario_manati.png.flat",
+        "source": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-main-61:/drawable/santuario_manati.png"
     },
     {
         "merged": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-release-60:/raw_lazro_cardenas_v2.glb.flat",

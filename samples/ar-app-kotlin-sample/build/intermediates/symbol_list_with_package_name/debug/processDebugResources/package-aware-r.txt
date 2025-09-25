@@ -2808,6 +2808,7 @@ drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_search_black_24
+drawable lazaro_cardenaz
 drawable logo_tec
 drawable m3_appbar_background
 drawable m3_avd_hide_password
@@ -2831,6 +2832,7 @@ drawable material_ic_keyboard_arrow_right_black_24dp
 drawable material_ic_menu_arrow_down_black_24dp
 drawable material_ic_menu_arrow_up_black_24dp
 drawable monumento_a_mujer_la_chetumalena
+drawable monumento_mujer
 drawable mtrl_bottomsheet_drag_handle
 drawable mtrl_checkbox_button
 drawable mtrl_checkbox_button_checked_unchecked
@@ -2882,6 +2884,7 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable santuario_manati
 drawable sceneview_fit_to_scan
 drawable test_level_drawable
 drawable tooltip_frame_dark

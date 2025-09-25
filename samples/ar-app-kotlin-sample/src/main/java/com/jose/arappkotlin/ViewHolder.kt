@@ -1,76 +1,80 @@
+// Define el paquete al que pertenece esta clase.
 package com.jose.arappkotlin
 
-import android.content.Intent
-import android.graphics.BitmapFactory
-import android.util.Log
-import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
-//import io.github.sceneview.ar.R // Explicit import for R class
-import java.io.InputStream
+// Importa las clases necesarias del framework de Android.
+import android.content.Intent // Para crear "intenciones" que permiten iniciar nuevas actividades.
+import android.graphics.BitmapFactory // Para decodificar archivos de imagen en objetos Bitmap.
+import android.util.Log // Para escribir mensajes en el log del sistema (útil para depurar).
+import android.view.View // La clase base para todos los componentes de la interfaz de usuario.
+import android.widget.ImageView // Para mostrar imágenes.
+import android.widget.TextView // Para mostrar texto.
+import androidx.recyclerview.widget.RecyclerView // La clase base para los ViewHolders.
 
 /**
- * Este esta encargado de obtener la imagen y mostrarla para ser mandado al MainActivity
- * */
+ * ViewHolder: Representa una sola celda (un ítem) en la lista del RecyclerView.
+ * Su responsabilidad es mantener las referencias a las vistas dentro de esa celda (como el texto y la imagen)
+ * y "vincular" los datos de un objeto (en este caso, un `Modelo`) a esas vistas.
+ */
 class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    // Se inicializa una ImageView a través de su identificador en el archivo de diseño XML
+    // Guarda una referencia a la ImageView del layout (item_menu.xml) para no tener que buscarla cada vez.
     val imageView: ImageView = itemView.findViewById(R.id.img)
-    // se inicializa el TextView a través de su identificador en el archivo de diseño XML
+    // Guarda una referencia al TextView del layout.
     val textView: TextView = itemView.findViewById(R.id.titulo)
 
-    // Esta función asigna los datos del modelo a la vista del ViewHolder
+    // Esta función es llamada por el Adapter para poblar esta celda con los datos de un modelo específico.
     fun bind(modelo: Modelo) {
         try {
-            // Obtener y mostrar imágenes
-            // Se obtiene el nombre de la imagen del modelo
-            val image = modelo.imagen
-            // Se abre un flujo de entrada de assets para la imagen
-            val imageStream = itemView.context.assets.open("images/$image")
-            // Se decodifica el flujo de entrada de la imagen en un Bitmap
+            // --- Cargar y mostrar la imagen ---
+            // Obtiene el nombre del archivo de la imagen del objeto modelo.
+            val imageName = modelo.imagen
+            // Abre un flujo de datos (InputStream) para leer la imagen desde la carpeta `assets/images/`.
+            val imageStream = itemView.context.assets.open("images/$imageName")
+            print(imageStream)
+            // Decodifica el flujo de datos en un objeto Bitmap, que es la imagen que se puede mostrar.
             val bitmap = BitmapFactory.decodeStream(imageStream)
-            // Se establece el Bitmap en la ImageView
+            // Establece el Bitmap en la ImageView para que se muestre en la pantalla.
             imageView.setImageBitmap(bitmap)
 
-            // Se agrega un listener a la ImageView para cuando se haga clic en la imagen
+            // --- Configurar el clic en la imagen ---
+            // Agrega un listener que se ejecutará cuando el usuario haga clic en la imagen.
             imageView.setOnClickListener {
-                // Se crea un intent para mostrar la información detallada del modelo
+                // Crea un Intent para abrir la pantalla de detalles (VistaInfoModel).
                 val intent = Intent(itemView.context, VistaInfoModel::class.java)
-                // Se agregan datos adicionales al intent, como el nombre, descripción, imagen, modelo y coordenadas del modelo
+                // Añade todos los datos del modelo al Intent como "extras" para que la siguiente actividad los reciba.
                 intent.putExtra("nombre", modelo.nombre)
                 intent.putExtra("descripcion", modelo.descripcion)
                 intent.putExtra("imagen", modelo.imagen)
-                intent.putExtra("modelo", modelo.modelo)
+                intent.putExtra("modelFileName", modelo.modelo) // nombre del archivo .glb desde assets
                 intent.putExtra("coordenadas", modelo.coordenadas)
-                intent.putExtra("modelResourceId", modelo.modelResourceId)
-                // Se inicia una nueva actividad con el intent creado
+                // Inicia la nueva actividad (VistaInfoModel).
                 itemView.context.startActivity(intent)
-                // textView.context.startActivity(intent)
             }
 
-            // Obtiene el nombre del modelo
+            // --- Cargar y mostrar el texto ---
+            // Obtiene el nombre del modelo.
             val nombre = modelo.nombre
-            // Establecer el nombre del modelo en el TextView
+            // Establece ese nombre en el TextView.
             textView.text = nombre
 
-            // Se agrega un listener al texto para cuando se haga clic en el titulo
+            // --- Configurar el clic en el texto ---
+            // Agrega un listener que se ejecutará cuando el usuario haga clic en el texto.
             textView.setOnClickListener {
-                // Se crea un intent para mostrar la información detallada del modelo
+                // Crea un Intent para abrir la pantalla de detalles (VistaInfoModel), igual que con la imagen.
                 val intent = Intent(itemView.context, VistaInfoModel::class.java)
-                // Se agregan datos adicionales al intent, como el nombre, descripción, imagen, modelo y coordenadas del modelo
+                // Añade todos los datos del modelo al Intent.
                 intent.putExtra("nombre", modelo.nombre)
                 intent.putExtra("descripcion", modelo.descripcion)
                 intent.putExtra("imagen", modelo.imagen)
                 intent.putExtra("modelo", modelo.modelo)
                 intent.putExtra("coordenadas", modelo.coordenadas)
                 intent.putExtra("modelResourceId", modelo.modelResourceId)
-                // Se inicia una nueva actividad con el intent creado
+                // Inicia la nueva actividad.
                 textView.context.startActivity(intent)
             }
 
         } catch (e: Exception) {
-            // Se registra cualquier error en el log
+            // Si ocurre cualquier error en el bloque `try` (ej. la imagen no se encuentra), se registra en el log.
             Log.e("ViewHolder", "Error en ViewHolder: $e")
         }
     }

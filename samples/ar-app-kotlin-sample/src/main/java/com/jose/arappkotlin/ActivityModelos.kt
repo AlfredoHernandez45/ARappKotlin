@@ -1,102 +1,132 @@
+// Define el paquete al que pertenece esta clase.
 package com.jose.arappkotlin
 
-import android.os.Bundle
-import android.util.Log
-import android.view.MotionEvent
-import androidx.appcompat.app.AppCompatActivity
-import io.github.sceneview.ar.ARSceneView
-import io.github.sceneview.ar.node.AnchorNode
-import io.github.sceneview.model.ModelInstance
-import io.github.sceneview.node.ModelNode
+// Importa las clases necesarias de Android y otras bibliotecas.
+import android.os.Bundle // Utilizado para pasar datos entre actividades y guardar el estado de la aplicación.
+import android.util.Log // Herramienta para enviar mensajes de registro al sistema (logcat).
+import android.view.MotionEvent // Representa un evento de movimiento, como un toque en la pantalla.
+import androidx.appcompat.app.AppCompatActivity // Clase base para actividades que usan la barra de aplicaciones de compatibilidad.
+import io.github.sceneview.ar.ARSceneView // La vista principal que renderiza la escena de Realidad Aumentada.
+import io.github.sceneview.ar.node.AnchorNode // Un nodo que se ancla a una superficie del mundo real detectada.
+import io.github.sceneview.model.ModelInstance // Una instancia de un modelo 3D que se puede renderizar.
+import io.github.sceneview.node.ModelNode // Un nodo en el grafo de la escena que contiene y muestra un modelo 3D.
+import android.net.Uri
 
-// Activity responsible for displaying 3D models in an Augmented Reality (AR) scene.
+
+// Actividad responsable de mostrar modelos 3D en una escena de Realidad Aumentada (AR).
 class ActivityModelos : AppCompatActivity() {
 
-    // ARSceneView is the main view for displaying AR content.
+    // ARSceneView es la vista principal para mostrar contenido AR.
     private lateinit var sceneView: ARSceneView
-    // modelNode holds the 3D model to be displayed in the AR scene.
+    // modelNode contiene el modelo 3D que se va a mostrar en la escena AR.
     private var modelNode: ModelNode? = null
-    // modelInstance is the instance of the loaded 3D model.
+    // modelInstance es la instancia del modelo 3D cargado.
     private var modelInstance: ModelInstance? = null
 
+    // Este método se llama cuando la actividad se crea por primera vez.
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Llama a la implementación de la clase base.
         super.onCreate(savedInstanceState)
-        // Set the layout for this activity.
+        // Establece el archivo de diseño (layout) para esta actividad.
         setContentView(R.layout.activity_modelos)
 
-        // Initialize the ARSceneView from the layout.
-        sceneView = findViewById(R.id.scene_view)
-        // Enable plane rendering to visualize detected planes in the AR scene.
+        // Inicializa la ARSceneView desde el layout, encontrándola por su ID.
+        sceneView = findViewById(R.id.arCameraArea)
+        // Habilita el renderizador de planos para visualizar las superficies detectadas en la escena AR.
         sceneView.planeRenderer.isEnabled = true
 
-        // Retrieve the model resource ID passed from the previous activity.
+        // Recupera el ID del recurso del modelo pasado desde la actividad anterior.
         val modelResourceId = intent.getIntExtra("modelResourceId", 0)
-        // Log the received model resource ID for debugging.
-        Log.d("ActivityModelos", "Received modelResourceId: $modelResourceId")
+        // Registra el ID del recurso del modelo recibido para fines de depuración.
+        Log.d("ActivityModelos", "ID de recurso del modelo recibido: $modelResourceId")
 
-        // Check if a valid model resource ID was provided.
-        if (modelResourceId != 0) {
-            // Construct the URI for the 3D model resource.
-            // Models are expected to be in the 'res/raw' folder.
-            val modelUri = "android.resource://$packageName/$modelResourceId"
-            // Log the constructed model URI for debugging.
-            Log.d("ActivityModelos", "Constructed model URI: $modelUri")
+        // Comprueba si se proporcionó un ID de recurso de modelo válido.
+        //if (modelResourceId != 0) {
+            // Construye el URI para el recurso del modelo 3D.
+            // Se espera que los modelos estén en la carpeta 'res/raw'.
+            //val modelUri = "android.resource://$packageName/$modelResourceId"
+            val modelFileName = intent.getStringExtra("modelFileName")
 
-            // Asynchronously load the 3D model using SceneView's modelLoader.
-            sceneView.modelLoader.loadModelAsync(modelUri) { model ->
-                // Check if the model was loaded successfully.
-                if (model != null) {
-                    // Create an instance of the loaded model.
-                    modelInstance = sceneView.modelLoader.createInstance(model)
-                    // Log the success or failure of model instance creation.
-                    if (modelInstance != null) {
-                        Log.d("ActivityModelos", "Model instance created successfully for resource ID: $modelResourceId")
+            if (modelFileName != null) {
+                //val modelUri = "file:///android_asset/models/$modelFileName"
+                //val modelUri = Uri.parse("android.resource://$packageName/raw/${modelFileName.substringBefore(".")}")
+                val modelUri = "android.resource://$packageName/raw/${modelFileName.substringBefore(".")}"
+
+                Log.d("ActivityModelos", "Loading model from assets: $modelUri")
+
+                sceneView.modelLoader.loadModelAsync(modelUri) { model ->
+                    if (model != null) {
+                        modelInstance = sceneView.modelLoader.createInstance(model)
+                        Log.d("ActivityModelos", "✅ Modelo cargado desde assets")
                     } else {
-                        Log.e("ActivityModelos", "Failed to create model instance for resource ID: $modelResourceId")
+                        Log.e("ActivityModelos", "❌ Error al cargar modelo desde assets")
                     }
-                } else {
-                    // Log an error if the model failed to load.
-                    Log.e("ActivityModelos", "Failed to load model with resource ID: $modelResourceId")
                 }
+            } else {
+                Log.e("ActivityModelos", "No se recibió nombre de archivo del modelo.")
             }
-        } else {
-            // Log an error if no valid model resource ID was provided.
-            Log.e("ActivityModelos", "No model resource ID provided in intent.")
-        }
 
-        // Set an OnTouchEvent listener for the ARSceneView to handle user interactions.
+
+
+
+            // Registra el URI del modelo construido para fines de depuración.
+            //Log.d("ActivityModelos", "URI del modelo construido: $modelUri")
+
+            // Carga de forma asíncrona el modelo 3D utilizando el modelLoader de SceneView.
+//            sceneView.modelLoader.loadModelAsync(modelUri) { model ->
+//                // Comprueba si el modelo se cargó correctamente.
+//                if (model != null) {
+//                    // Crea una instancia del modelo cargado.
+//                    modelInstance = sceneView.modelLoader.createInstance(model)
+//                    // Registra si la creación de la instancia del modelo fue exitosa o no.
+//                    if (modelInstance != null) {
+//                        Log.d("ActivityModelos", "Instancia del modelo creada con éxito para el ID de recurso: $modelResourceId")
+//                    } else {
+//                        Log.e("ActivityModelos", "Error al crear la instancia del modelo para el ID de recurso: $modelResourceId")
+//                    }
+//                } else {
+//                    // Registra un error si el modelo no se pudo cargar.
+//                    Log.e("ActivityModelos", "Error al cargar el modelo con ID de recurso: $modelResourceId")
+//                }
+//            }
+        //} else {
+            // Registra un error si no se proporcionó un ID de recurso de modelo válido.
+            // Log.e("ActivityModelos", "No se proporcionó ningún ID de recurso de modelo en el intent.")
+        //}
+
+        // Establece un listener OnTouchEvent para que la ARSceneView maneje las interacciones del usuario.
         sceneView.onTouchEvent = { motionEvent, hitResult ->
-            // Process only when a touch down event occurs.
+            // Procesa solo cuando ocurre un evento de tocar la pantalla (acción de bajar el dedo).
             if (motionEvent.action == MotionEvent.ACTION_DOWN) {
-                // Perform an AR hit test at the touch coordinates to find a real-world surface.
+                // Realiza una prueba de impacto AR en las coordenadas del toque para encontrar una superficie del mundo real.
                 val arHitResult = sceneView.hitTestAR(motionEvent.x, motionEvent.y)
-                // Check if a valid AR hit result was obtained.
+                // Comprueba si se obtuvo un resultado de impacto AR válido.
                 if (arHitResult != null) {
-                    // If a model instance exists, proceed with placing it.
+                    // Si existe una instancia de modelo, procede a colocarla.
                     modelInstance?.let { instance ->
-                        // If a model is already placed in the scene, remove it first.
+                        // Si ya hay un modelo colocado en la escena, elimínalo primero.
                         modelNode?.let {
-                            it.parent?.removeChildNode(it) // Remove from its parent node.
-                            it.destroy() // Destroy the node to release resources.
+                            it.parent?.removeChildNode(it) // Lo elimina de su nodo padre.
+                            it.destroy() // Destruye el nodo para liberar recursos.
                         }
 
-                        // Create a new AnchorNode at the hit test location.
-                        // An AnchorNode is used to place virtual content in the real world.
+                        // Crea un nuevo AnchorNode en la ubicación de la prueba de impacto.
+                        // Un AnchorNode se utiliza para anclar contenido virtual al mundo real.
                         val anchorNode = AnchorNode(sceneView.engine, arHitResult.createAnchor())
-                        // Add the AnchorNode to the AR scene.
+                        // Añade el AnchorNode a la escena AR.
                         sceneView.addChildNode(anchorNode)
 
-                        // Create a new ModelNode with the loaded model instance.
+                        // Crea un nuevo ModelNode con la instancia del modelo cargado.
                         modelNode = ModelNode(modelInstance = instance)
-                        // Add the ModelNode as a child of the AnchorNode.
-                        // This links the 3D model to the real-world anchor.
+                        // Añade el ModelNode como hijo del AnchorNode.
+                        // Esto vincula el modelo 3D al ancla del mundo real.
                         anchorNode.addChildNode(modelNode!!)
-                        // Log that the model has been placed.
-                        Log.d("ActivityModelos", "Model placed at AR hit result.")
+                        // Registra que el modelo ha sido colocado.
+                        Log.d("ActivityModelos", "Modelo colocado en el resultado del impacto AR.")
                     }
                 }
             }
-            // Consume the event to prevent it from being processed by other listeners.
+            // Consume el evento para evitar que sea procesado por otros listeners.
             true
         }
     }

@@ -1,4 +1,4 @@
-#Thu Aug 28 21:58:49 EST 2025
+#Tue Sep 02 23:28:39 EST 2025
 base.0=/Users/josealfredo/Documents/StudioProjects/sceneview-android-main/samples/ar-app-kotlin-sample/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
 base.1=/Users/josealfredo/Documents/StudioProjects/sceneview-android-main/samples/ar-app-kotlin-sample/build/intermediates/dex/debug/mergeLibDexDebug/1/classes.dex
 base.10=/Users/josealfredo/Documents/StudioProjects/sceneview-android-main/samples/ar-app-kotlin-sample/build/intermediates/dex/debug/mergeLibDexDebug/6/classes.dex

@@ -11,6 +11,9 @@ import android.widget.ImageView // Para mostrar imágenes.
 import android.widget.TextView // Para mostrar texto.
 import androidx.appcompat.app.AppCompatActivity // Clase base para actividades con barra de aplicaciones.
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
+import com.google.android.material.appbar.CollapsingToolbarLayout
+import java.io.IOException
 
 // Define la clase para la pantalla de detalles del modelo. Hereda de AppCompatActivity.
 class VistaInfoModel : AppCompatActivity() {
@@ -21,24 +24,25 @@ class VistaInfoModel : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         // Establece el layout (la interfaz de usuario) desde el archivo XML `activity_vistas.xml`.
         setContentView(R.layout.activity_vistas)
-        // Oculta la barra de acción (la barra superior) para tener más espacio.
-        supportActionBar?.hide()
+
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         // --- Recibir datos de la actividad anterior ---
         // Se obtienen los datos que se pasaron a esta actividad a través del Intent.
         val nombre = intent.getStringExtra("nombre")
         val descripcion = intent.getStringExtra("descripcion")
         val imagen = intent.getStringExtra("imagen")
-        val modelo = intent.getStringExtra("modelo") // Aunque se recibe, no se usa directamente en este código.
         val coordenadas = intent.getStringExtra("coordenadas")
-        val modelResourceId = intent.getIntExtra("modelResourceId", 0) // Se recibe el ID del recurso del modelo.
+        val modelFileName = intent.getStringExtra("modelFileName")
 
         // --- Vincular vistas del layout con variables ---
         // Se asignan las vistas del layout a las variables correspondientes para poder manipularlas.
         val imageView: ImageView = findViewById(R.id.imgMonument)
-        val textTitulo: TextView = findViewById(R.id.titulo)
         val textDescrip: TextView = findViewById(R.id.descripcion)
         val btnMap: Button = findViewById(R.id.mapa)
+        val collapsingToolbar: CollapsingToolbarLayout = findViewById(R.id.collapsing_toolbar)
 
         // Se usa un bloque try-catch para manejar posibles errores, como no encontrar un archivo de imagen.
         try {
@@ -49,19 +53,13 @@ class VistaInfoModel : AppCompatActivity() {
             imageView.setImageBitmap(bitmap)
 
             // Mostrar el nombre y la descripción en los TextViews correspondientes.
-            textTitulo.text = nombre
+            collapsingToolbar.title = nombre
             textDescrip.text = descripcion
 
             // --- Configurar acciones de los botones y vistas ---
-            val modelFileName = intent.getStringExtra("modelFileName")
-
             // Configura el listener para que al hacer clic en la imagen, se abra la vista de Realidad Aumentada.
             imageView.setOnClickListener {
-                val modelFileName = intent.getStringExtra("modelFileName")
-                val resourceId = resources.getIdentifier(modelFileName?.substringBefore("."), "raw", packageName)
-
-                if (resourceId != null && resourceId != 0) {
-                    // Solo crea un Intent si el archivo existe
+                if (modelFileName != null && modelExists(modelFileName)) {
                     val intent = Intent(this, ActivityModelos::class.java)
                     intent.putExtra("modelFileName", modelFileName)
                     Toast.makeText(this, "Cargando modelo 3D...", Toast.LENGTH_SHORT).show()
@@ -70,13 +68,6 @@ class VistaInfoModel : AppCompatActivity() {
                     Toast.makeText(this, "El modelo 3D no se encontró", Toast.LENGTH_SHORT).show()
                 }
             }
-
-            /* Bloque de código comentado que parece ser una versión anterior de la misma funcionalidad.
-            imageView.setOnClickListener {
-                val intent = Intent(this, ActivityModelos::class.java)
-                intent.putExtra("modelo", modelo)
-                startActivity(intent)
-            }*/
 
             // Configura el listener para que al hacer clic en el botón del mapa, se abra Google Maps.
             btnMap.setOnClickListener {
@@ -92,5 +83,19 @@ class VistaInfoModel : AppCompatActivity() {
             // Si ocurre cualquier error en el bloque `try`, se registra en el log para facilitar la depuración.
             Log.e("VistaInfoModel", "Error en VistaInfoModelo: $e")
         }
+    }
+
+    private fun modelExists(fileName: String): Boolean {
+        return try {
+            assets.open("models/$fileName").close()
+            true
+        } catch (e: IOException) {
+            false
+        }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }

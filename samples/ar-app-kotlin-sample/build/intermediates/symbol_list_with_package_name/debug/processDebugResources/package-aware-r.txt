@@ -2975,7 +2975,6 @@ id animateToEnd
 id animateToStart
 id antiClockwise
 id anticipate
-id appbar
 id arc
 id asConfigured
 id async
@@ -3018,7 +3017,6 @@ id clip_vertical
 id clockwise
 id closest
 id collapseActionView
-id collapsing_toolbar
 id compose_view_saveable_id_tag
 id compress
 id confirm_button
@@ -3151,7 +3149,6 @@ id line3
 id linear
 id listMode
 id list_item
-id loadingView
 id m3_side_sheet
 id mapa
 id marquee
@@ -3272,7 +3269,7 @@ id save_non_transition_alpha
 id save_overlay_view
 id sawtooth
 id scale
-id sceneView
+id scene_view
 id screen
 id scroll
 id scrollIndicatorDown
@@ -3383,7 +3380,6 @@ id titleDividerNoCustom
 id title_template
 id titulo
 id toggle
-id toolbar
 id top
 id topPanel
 id touch_outside
@@ -3395,6 +3391,7 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
+id txt_presionar
 id unchecked
 id uniform
 id unlabeled

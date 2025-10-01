@@ -28,12 +28,8 @@
         "source": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-main-62:/xml/backup_rules.xml"
     },
     {
-        "merged": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-debug-60:/drawable_monumento_mujer.jpg.flat",
-        "source": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-main-62:/drawable/monumento_mujer.jpg"
-    },
-    {
-        "merged": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-debug-60:/drawable_lazaro_cardenaz.jpg.flat",
-        "source": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-main-62:/drawable/lazaro_cardenaz.jpg"
+        "merged": "com.jose.arappkotlin.ar-app-kotlin-sample-debug-60:/drawable_santuario_manati.png.flat",
+        "source": "com.jose.arappkotlin.ar-app-kotlin-sample-main-62:/drawable/santuario_manati.png"
     },
     {
         "merged": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-debug-60:/xml_data_extraction_rules.xml.flat",
@@ -42,10 +38,6 @@
     {
         "merged": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-debug-60:/drawable_monumento_a_mujer_la_chetumalena.jpg.flat",
         "source": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-main-62:/drawable/monumento_a_mujer_la_chetumalena.jpg"
-    },
-    {
-        "merged": "com.jose.arappkotlin.ar-app-kotlin-sample-debug-60:/layout_activity_modelos.xml.flat",
-        "source": "com.jose.arappkotlin.ar-app-kotlin-sample-main-62:/layout/activity_modelos.xml"
     },
     {
         "merged": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-debug-60:/raw_lazaro_cardenas_v3.glb.flat",
@@ -60,6 +52,14 @@
         "source": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-main-62:/layout/activity_modelos.xml"
     },
     {
+        "merged": "com.jose.arappkotlin.ar-app-kotlin-sample-debug-60:/drawable_monumento_mujer.jpg.flat",
+        "source": "com.jose.arappkotlin.ar-app-kotlin-sample-main-62:/drawable/monumento_mujer.jpg"
+    },
+    {
+        "merged": "com.jose.arappkotlin.ar-app-kotlin-sample-debug-60:/drawable_lazaro_cardenaz.jpg.flat",
+        "source": "com.jose.arappkotlin.ar-app-kotlin-sample-main-62:/drawable/lazaro_cardenaz.jpg"
+    },
+    {
         "merged": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-debug-60:/raw_manati_4.glb.flat",
         "source": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-main-62:/raw/manati_4.glb"
     },
@@ -68,24 +68,20 @@
         "source": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-main-62:/mipmap-xxhdpi/ic_launcher.webp"
     },
     {
-        "merged": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-debug-60:/drawable_santuario_manati.png.flat",
-        "source": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-main-62:/drawable/santuario_manati.png"
+        "merged": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-debug-60:/layout_activity_google_map.xml.flat",
+        "source": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-main-62:/layout/activity_google_map.xml"
     },
     {
         "merged": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-debug-60:/raw_mustang_azul.glb.flat",
         "source": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-main-62:/raw/mustang_azul.glb"
     },
     {
-        "merged": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-debug-60:/layout_activity_google_map.xml.flat",
-        "source": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-main-62:/layout/activity_google_map.xml"
+        "merged": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-debug-60:/raw_response3.json.flat",
+        "source": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-main-62:/raw/response3.json"
     },
     {
         "merged": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-debug-60:/drawable_ic_launcher_background.xml.flat",
         "source": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-main-62:/drawable/ic_launcher_background.xml"
-    },
-    {
-        "merged": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-debug-60:/raw_response3.json.flat",
-        "source": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-main-62:/raw/response3.json"
     },
     {
         "merged": "/Users/josealfredo/.gradle/daemon/8.11.1/com.jose.arappkotlin.ar-app-kotlin-sample-debug-60:/layout_activity_main.xml.flat",

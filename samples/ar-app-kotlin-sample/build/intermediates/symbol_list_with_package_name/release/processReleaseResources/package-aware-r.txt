@@ -3131,6 +3131,7 @@ id included
 id indeterminate
 id info
 id inspection_slot_table_set
+id instructionText
 id invisible
 id inward
 id is_pooling_container_tag
@@ -3149,6 +3150,7 @@ id line3
 id linear
 id listMode
 id list_item
+id loadingView
 id m3_side_sheet
 id mapa
 id marquee
@@ -3262,6 +3264,7 @@ id right
 id rightToLeft
 id right_icon
 id right_side
+id rootView
 id rounded
 id row_index_key
 id satellite
@@ -3269,7 +3272,7 @@ id save_non_transition_alpha
 id save_overlay_view
 id sawtooth
 id scale
-id scene_view
+id sceneView
 id screen
 id scroll
 id scrollIndicatorDown
@@ -3829,6 +3832,7 @@ string path_password_eye
 string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
 string path_password_strike_through
+string point_your_phone_down
 string presiona_la_imagen
 string range_end
 string range_start

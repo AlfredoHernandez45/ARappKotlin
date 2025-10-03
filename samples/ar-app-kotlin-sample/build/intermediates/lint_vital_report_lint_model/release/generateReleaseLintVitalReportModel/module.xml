@@ -1,6 +1,6 @@
 <lint-module
     format="1"
-    dir="/Users/josealfredo/Documents/StudioProjects/sceneview-android-main/samples/ar-app-kotlin-sample"
+    dir="/Users/josealfredo/Documents/GitHub/ARappKotlin-2025/samples/ar-app-kotlin-sample"
     name=":samples:ar-app-kotlin-sample"
     type="APP"
     maven="SceneView.samples:ar-app-kotlin-sample:unspecified"

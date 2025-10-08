@@ -179,17 +179,17 @@ class MainActivity : AppCompatActivity() {
                 val jsonObject = jsonArray.getJSONObject(i)
                 // Obtiene el nombre del archivo del modelo 3D.
                 val modelName = jsonObject.optString("modelo")
-                // Obtiene el ID del recurso del modelo 3D desde la carpeta "raw".
-                val modelResourceId = resources.getIdentifier(modelName.substringBefore("."), "raw", packageName)
+                // Obtiene el nombre del archivo del modelo 3D (ej. "manati_4.glb").
+                // Almacenamos solo el nombre del recurso (sin extensión) para cargarlo desde res/raw.
+                val modelResourceName = modelName.substringBefore(".")
 
                 // Crea una instancia de la clase Modelo con los datos del JSON.
                 val modelo = Modelo(
                     nombre = jsonObject.optString("nombre"),
                     descripcion = jsonObject.optString("descripcion"),
                     imagen = jsonObject.optString("imagen"),
-                    modelo = modelName,
-                    coordenadas = jsonObject.optString("coordenadas"),
-                    modelResourceId = modelResourceId
+                    modelo = modelResourceName, // Almacenamos solo el nombre del recurso
+                    coordenadas = jsonObject.optString("coordenadas")
                 )
                 // Añade el objeto Modelo a la lista.
                 modelos.add(modelo)

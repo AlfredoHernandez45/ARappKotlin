@@ -112,21 +112,16 @@ class ActivityModelos : AppCompatActivity() {
     }
 
     private suspend fun buildModelNode(): ModelNode? {
-        // Recupera el nombre del archivo del modelo pasado desde la actividad anterior
-        val modelFileName = intent.getStringExtra("modelFileName")
-        if (modelFileName == null) {
-            Log.e("ActivityModelos", "No se recibió el nombre de archivo del modelo.")
-            return null
-        }
+        // Para la prueba, cargamos directamente carton_car.glb desde res/raw
+        val resourceName = "carton_car" // Nombre del archivo sin extensión
+        val modelUri = "android.resource://$packageName/raw/$resourceName"
 
-        // Construye la URI del modelo desde la carpeta 'res/raw'
-        val modelUri = "android.resource://$packageName/raw/manati_4"
-        Log.d("ActivityModelos", "Cargando modelo desde: $modelUri")
+        Log.d("ActivityModelos", "Cargando modelo de prueba desde: $modelUri")
 
         // Carga la instancia del modelo 3D
         val modelInstance = sceneView.modelLoader.loadModelInstance(modelUri)
         if (modelInstance == null) {
-            Log.e("ActivityModelos", "❌ Error al cargar el modelo desde $modelUri")
+            Log.e("ActivityModelos", "❌ Error al cargar el modelo de prueba desde $modelUri")
             return null
         }
 

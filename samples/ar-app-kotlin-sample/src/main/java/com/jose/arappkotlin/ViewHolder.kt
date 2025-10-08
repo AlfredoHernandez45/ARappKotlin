@@ -68,7 +68,7 @@ class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                 intent.putExtra("imagen", modelo.imagen)
                 intent.putExtra("modelo", modelo.modelo)
                 intent.putExtra("coordenadas", modelo.coordenadas)
-                intent.putExtra("modelResourceId", modelo.modelResourceId)
+                intent.putExtra("modelFileName", modelo.modelo) // Pass the full asset path
                 // Inicia la nueva actividad.
                 textView.context.startActivity(intent)
             }

@@ -3617,6 +3617,7 @@ mipmap ic_launcher
 mipmap ic_launcher_round
 mipmap ico
 plurals mtrl_badge_content_description
+raw carton_car
 raw keep_arcore
 raw lazaro_cardenas_v3
 raw lazaro_cardenas_v4

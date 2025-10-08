@@ -14,8 +14,5 @@ data class Modelo(
     // Propiedad para el nombre del archivo del modelo 3D (ej. "silla.glb").
     val modelo: String,
     // Propiedad para las coordenadas geográficas (latitud,longitud) asociadas a este modelo, guardadas como un String.
-    val coordenadas: String,
-    // Propiedad para el ID de recurso entero (ej. R.raw.silla) del modelo 3D.
-    // Este ID es crucial para poder cargarlo desde los recursos de la app en la escena de AR.
-    val modelResourceId: Int
+    val coordenadas: String
 )

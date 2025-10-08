@@ -180,12 +180,12 @@ ADDED from /Users/josealfredo/Documents/GitHub/ARappKotlin-2025/samples/ar-app-k
 		ADDED from /Users/josealfredo/Documents/GitHub/ARappKotlin-2025/samples/ar-app-kotlin-sample/src/main/AndroidManifest.xml:28:13-52
 	android:name
 		ADDED from /Users/josealfredo/Documents/GitHub/ARappKotlin-2025/samples/ar-app-kotlin-sample/src/main/AndroidManifest.xml:27:13-58
-activity#com.jose.arappkotlin.MainActivity
+activity#com.jose.arappkotlin.ActivityModelos
 ADDED from /Users/josealfredo/Documents/GitHub/ARappKotlin-2025/samples/ar-app-kotlin-sample/src/main/AndroidManifest.xml:30:9-42:20
 	android:exported
 		ADDED from /Users/josealfredo/Documents/GitHub/ARappKotlin-2025/samples/ar-app-kotlin-sample/src/main/AndroidManifest.xml:32:13-36
 	android:name
-		ADDED from /Users/josealfredo/Documents/GitHub/ARappKotlin-2025/samples/ar-app-kotlin-sample/src/main/AndroidManifest.xml:31:13-41
+		ADDED from /Users/josealfredo/Documents/GitHub/ARappKotlin-2025/samples/ar-app-kotlin-sample/src/main/AndroidManifest.xml:31:13-44
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
 ADDED from /Users/josealfredo/Documents/GitHub/ARappKotlin-2025/samples/ar-app-kotlin-sample/src/main/AndroidManifest.xml:33:13-37:29
 action#android.intent.action.MAIN
@@ -208,12 +208,12 @@ ADDED from /Users/josealfredo/Documents/GitHub/ARappKotlin-2025/samples/ar-app-k
 		ADDED from /Users/josealfredo/Documents/GitHub/ARappKotlin-2025/samples/ar-app-kotlin-sample/src/main/AndroidManifest.xml:46:13-37
 	android:name
 		ADDED from /Users/josealfredo/Documents/GitHub/ARappKotlin-2025/samples/ar-app-kotlin-sample/src/main/AndroidManifest.xml:45:13-43
-activity#com.jose.arappkotlin.ActivityModelos
+activity#com.jose.arappkotlin.MainActivity
 ADDED from /Users/josealfredo/Documents/GitHub/ARappKotlin-2025/samples/ar-app-kotlin-sample/src/main/AndroidManifest.xml:47:9-49:39
 	android:exported
 		ADDED from /Users/josealfredo/Documents/GitHub/ARappKotlin-2025/samples/ar-app-kotlin-sample/src/main/AndroidManifest.xml:49:13-37
 	android:name
-		ADDED from /Users/josealfredo/Documents/GitHub/ARappKotlin-2025/samples/ar-app-kotlin-sample/src/main/AndroidManifest.xml:48:13-44
+		ADDED from /Users/josealfredo/Documents/GitHub/ARappKotlin-2025/samples/ar-app-kotlin-sample/src/main/AndroidManifest.xml:48:13-41
 activity#com.jose.arappkotlin.Google_Map
 ADDED from /Users/josealfredo/Documents/GitHub/ARappKotlin-2025/samples/ar-app-kotlin-sample/src/main/AndroidManifest.xml:50:9-52:39
 	android:exported

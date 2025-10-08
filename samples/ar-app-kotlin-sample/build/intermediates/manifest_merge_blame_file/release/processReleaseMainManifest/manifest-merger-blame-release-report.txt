@@ -100,8 +100,8 @@
 59
 60        <activity
 60-->/Users/josealfredo/Documents/GitHub/ARappKotlin-2025/samples/ar-app-kotlin-sample/src/main/AndroidManifest.xml:30:9-42:20
-61            android:name="com.jose.arappkotlin.MainActivity"
-61-->/Users/josealfredo/Documents/GitHub/ARappKotlin-2025/samples/ar-app-kotlin-sample/src/main/AndroidManifest.xml:31:13-41
+61            android:name="com.jose.arappkotlin.ActivityModelos"
+61-->/Users/josealfredo/Documents/GitHub/ARappKotlin-2025/samples/ar-app-kotlin-sample/src/main/AndroidManifest.xml:31:13-44
 62            android:exported="true" >
 62-->/Users/josealfredo/Documents/GitHub/ARappKotlin-2025/samples/ar-app-kotlin-sample/src/main/AndroidManifest.xml:32:13-36
 63            <intent-filter>
@@ -130,8 +130,8 @@
 75-->/Users/josealfredo/Documents/GitHub/ARappKotlin-2025/samples/ar-app-kotlin-sample/src/main/AndroidManifest.xml:46:13-37
 76        <activity
 76-->/Users/josealfredo/Documents/GitHub/ARappKotlin-2025/samples/ar-app-kotlin-sample/src/main/AndroidManifest.xml:47:9-49:39
-77            android:name="com.jose.arappkotlin.ActivityModelos"
-77-->/Users/josealfredo/Documents/GitHub/ARappKotlin-2025/samples/ar-app-kotlin-sample/src/main/AndroidManifest.xml:48:13-44
+77            android:name="com.jose.arappkotlin.MainActivity"
+77-->/Users/josealfredo/Documents/GitHub/ARappKotlin-2025/samples/ar-app-kotlin-sample/src/main/AndroidManifest.xml:48:13-41
 78            android:exported="false" />
 78-->/Users/josealfredo/Documents/GitHub/ARappKotlin-2025/samples/ar-app-kotlin-sample/src/main/AndroidManifest.xml:49:13-37
 79        <activity

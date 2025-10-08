@@ -59,7 +59,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name="com.jose.arappkotlin.MainActivity"
+            android:name="com.jose.arappkotlin.ActivityModelos"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -75,7 +75,7 @@
             android:name="com.jose.arappkotlin.VistaInfoModel"
             android:exported="false" />
         <activity
-            android:name="com.jose.arappkotlin.ActivityModelos"
+            android:name="com.jose.arappkotlin.MainActivity"
             android:exported="false" />
         <activity
             android:name="com.jose.arappkotlin.Google_Map"

@@ -29,9 +29,8 @@ class VistaInfoModel : AppCompatActivity() {
         val nombre = intent.getStringExtra("nombre")
         val descripcion = intent.getStringExtra("descripcion")
         val imagen = intent.getStringExtra("imagen")
-        val modelo = intent.getStringExtra("modelo") // Aunque se recibe, no se usa directamente en este código.
+        val modelo = intent.getStringExtra("modelo")
         val coordenadas = intent.getStringExtra("coordenadas")
-        val modelResourceId = intent.getIntExtra("modelResourceId", 0) // Se recibe el ID del recurso del modelo.
 
         // --- Vincular vistas del layout con variables ---
         // Se asignan las vistas del layout a las variables correspondientes para poder manipularlas.
@@ -57,17 +56,13 @@ class VistaInfoModel : AppCompatActivity() {
 
             // Configura el listener para que al hacer clic en la imagen, se abra la vista de Realidad Aumentada.
             imageView.setOnClickListener {
-                val modelFileName = intent.getStringExtra("modelFileName")
-                val resourceId = resources.getIdentifier(modelFileName?.substringBefore("."), "raw", packageName)
-
-                if (resourceId != null && resourceId != 0) {
-                    // Solo crea un Intent si el archivo existe
+                if (modelo != null) {
                     val intent = Intent(this, ActivityModelos::class.java)
-                    intent.putExtra("modelFileName", modelFileName)
+                    intent.putExtra("modelFileName", modelo) // Pass the full asset path
                     Toast.makeText(this, "Cargando modelo 3D...", Toast.LENGTH_SHORT).show()
                     startActivity(intent)
                 } else {
-                    Toast.makeText(this, "El modelo 3D no se encontró", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "No se encontró el nombre del archivo del modelo 3D.", Toast.LENGTH_SHORT).show()
                 }
             }
 

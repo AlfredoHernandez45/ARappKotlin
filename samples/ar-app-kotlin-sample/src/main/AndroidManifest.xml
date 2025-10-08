@@ -28,7 +28,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".ActivityModelos"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -45,7 +45,7 @@
             android:name=".VistaInfoModel"
             android:exported="false" />
         <activity
-            android:name=".ActivityModelos"
+            android:name=".MainActivity"
             android:exported="false"/>
         <activity
             android:name=".Google_Map"

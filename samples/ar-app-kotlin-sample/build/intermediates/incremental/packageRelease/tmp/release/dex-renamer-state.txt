@@ -1,4 +1,4 @@
-#Thu Oct 02 20:01:23 EST 2025
+#Fri Oct 03 13:12:00 EST 2025
 base.0=/Users/josealfredo/Documents/GitHub/ARappKotlin-2025/samples/ar-app-kotlin-sample/build/intermediates/dex/release/mergeDexRelease/classes.dex
 base.1=/Users/josealfredo/Documents/GitHub/ARappKotlin-2025/samples/ar-app-kotlin-sample/build/intermediates/dex/release/mergeDexRelease/classes2.dex
 base.2=/Users/josealfredo/Documents/GitHub/ARappKotlin-2025/samples/ar-app-kotlin-sample/build/intermediates/dex/release/mergeDexRelease/classes3.dex

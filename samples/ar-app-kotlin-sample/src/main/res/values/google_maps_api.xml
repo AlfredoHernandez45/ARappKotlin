@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <!--
-    IMPORTANT: You need to replace "YOUR_GOOGLE_MAPS_API_KEY" with your actual Google Maps API Key.
-    You can get one from the Google Cloud Console: https://console.cloud.google.com/apis/credentials
-    -->
-    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyAaIFiwy14gN86cFQKtIH1ph1NjFZf0jT8</string>
-</resources>

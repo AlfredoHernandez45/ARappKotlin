@@ -189,9 +189,9 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             ModelNode(
                 modelInstance = instance,
                 // Scale to fit in a 0.5 meters cube
-                scaleToUnits = 0.5f,
+                scaleToUnits = 1.0f,
                 // Bottom origin instead of center so the model base is on floor
-                centerOrigin = Position(y = -0.5f)
+                centerOrigin = Position(y = -1.0f)
             ).apply {
                 isEditable = true
             }

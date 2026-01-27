@@ -53,10 +53,16 @@ class DetailsActivity : AppCompatActivity(R.layout.activity_details) {
         }
 
         findViewById<Button>(R.id.btnHowToGetThere).setOnClickListener {
-            val gmmIntentUri = Uri.parse("geo:${monument.latitude},${monument.longitude}?q=${monument.latitude},${monument.longitude}(${monument.name})")
-            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-            mapIntent.setPackage("com.google.android.apps.maps")
-            startActivity(mapIntent)
+            if (monument.latitude != null && monument.longitude != null) {
+                val intent = Intent(this, MapActivity::class.java).apply {
+                    putExtra("EXTRA_LAT", monument.latitude)
+                    putExtra("EXTRA_LON", monument.longitude)
+                    putExtra("EXTRA_NAME", monument.name)
+                }
+                startActivity(intent)
+            } else {
+                android.widget.Toast.makeText(this, "Coordenadas no disponibles para este monumento", android.widget.Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }

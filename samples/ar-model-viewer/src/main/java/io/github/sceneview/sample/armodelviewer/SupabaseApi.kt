@@ -1,5 +1,6 @@
 package io.github.sceneview.sample.armodelviewer
 
+import android.content.Context
 import fuel.Fuel
 
 import fuel.get
@@ -21,17 +22,21 @@ data class ApiProduct(
 )
 
 object SupabaseApi {
-    private const val BASE_URL = "https://buhtjjlxsgpclkdnmilf.supabase.co/rest/v1/productos"
+    private const val DEFAULT_BASE_URL = "https://buhtjjlxsgpclkdnmilf.supabase.co/rest/v1/productos"
     // Use the Anon key provided in environment.ts
     private const val SUPABASE_KEY = "sb_publishable_YRcJCGFxzmuad2hcX0XwMw_forgrOtD"
 
     private val json = Json { ignoreUnknownKeys = true }
 
-    suspend fun fetchMonuments(): List<Monument> = withContext(Dispatchers.IO) {
+    suspend fun fetchMonuments(context: android.content.Context): List<Monument> = withContext(Dispatchers.IO) {
         try {
+            val prefs = context.getSharedPreferences("ARModelViewerPrefs", Context.MODE_PRIVATE)
+            val storedUrl = prefs.getString("api_url", "")
+            val baseUrl = if (!storedUrl.isNullOrEmpty()) storedUrl else DEFAULT_BASE_URL
+
             val loader = Fuel.loader()
             val response = loader.get {
-                url = BASE_URL
+                url = baseUrl
                 headers = mapOf(
                     "apikey" to SUPABASE_KEY,
                     "Authorization" to "Bearer $SUPABASE_KEY"

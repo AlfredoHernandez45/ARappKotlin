@@ -16,6 +16,7 @@ import com.google.ar.core.Plane
 import com.google.ar.core.TrackingFailureReason
 import com.google.ar.core.TrackingState
 import android.view.MotionEvent
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import io.github.sceneview.ar.ARSceneView
 import io.github.sceneview.gesture.GestureDetector
 import io.github.sceneview.node.Node
@@ -40,9 +41,14 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         set(value) {
             field = value
             loadingView.isGone = !value
+            updateInstructions()
         }
 
     var modelNode: ModelNode? = null
+        set(value) {
+            field = value
+            updateInstructions()
+        }
     var modelUrl: String? = null
     var modelResId: Int = 0
 
@@ -94,7 +100,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                 config.lightEstimationMode = Config.LightEstimationMode.ENVIRONMENTAL_HDR
             }
             onSessionUpdated = { _, frame ->
-                if (anchorNode == null) {
+                if (anchorNode == null && modelNode != null && !isLoading) {
                     val camera = frame.camera
                     if (camera.trackingState == TrackingState.TRACKING) {
                         val plane = frame.getUpdatedPlanes()
@@ -130,6 +136,24 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         modelResId = intent.getIntExtra("EXTRA_MODEL_RES_ID", 0)
         modelUrl = intent.getStringExtra("EXTRA_MODEL_URL")
 
+        findViewById<FloatingActionButton>(R.id.resetButton).setOnClickListener {
+            resetAR()
+        }
+
+        val scaleSlider = findViewById<android.widget.SeekBar>(R.id.scaleSlider)
+        scaleSlider.setOnSeekBarChangeListener(object : android.widget.SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: android.widget.SeekBar?, progress: Int, fromUser: Boolean) {
+                if (fromUser) {
+                    // Map 0..100 to 0.1 .. 1.5
+                    val scale = 0.1f + (progress / 100f) * (1.5f - 0.1f)
+                    modelNode?.scale = io.github.sceneview.math.Scale(scale)
+                    Log.d("SceneView", "Manual scale set: $scale")
+                }
+            }
+            override fun onStartTrackingTouch(seekBar: android.widget.SeekBar?) {}
+            override fun onStopTrackingTouch(seekBar: android.widget.SeekBar?) {}
+        })
+
         // Pre-load the model
         lifecycleScope.launch {
             isLoading = true
@@ -140,13 +164,25 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     }
 
     fun updateInstructions() {
-        instructionText.text = trackingFailureReason?.let {
-            it.getDescription(this)
-        } ?: if (anchorNode == null) {
-            "Mueve la cámara lento o toca el piso si no aparece el modelo"
-        } else {
-            null
+        instructionText.text = when {
+            isLoading -> "Cargando modelo..."
+            trackingFailureReason != null -> trackingFailureReason!!.getDescription(this)
+            anchorNode == null -> {
+                if (modelNode == null) "Preparando modelo..."
+                else "Mueve la cámara lento para encontrar el piso"
+            }
+            else -> null
         }
+    }
+
+    fun resetAR() {
+        anchorNode?.let {
+            sceneView.removeChildNode(it)
+            it.destroy()
+        }
+        anchorNode = null
+        updateInstructions()
+        Log.d("SceneView", "AR session reset")
     }
 
     fun addAnchorNode(anchor: Anchor) {
@@ -189,11 +225,13 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             ModelNode(
                 modelInstance = instance,
                 // Scale to fit in a 0.5 meters cube
-                scaleToUnits = 1.0f,
+                scaleToUnits = 0.5f,
                 // Bottom origin instead of center so the model base is on floor
-                centerOrigin = Position(y = -1.0f)
+                centerOrigin = Position(y = -0.5f)
             ).apply {
                 isEditable = true
+                isScaleEditable = true
+                isRotationEditable = true
             }
         } ?: run {
             Log.e("SceneView", "Failed to load model instance")

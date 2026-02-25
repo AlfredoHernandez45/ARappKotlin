@@ -42,6 +42,12 @@
             android:exported="false"
             android:label="Mapa de Ubicación" />
 
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false"
+            android:label="Configuraciones"
+            android:screenOrientation="locked" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAaIFiwy14gN86cFQKtIHiphiNjFZf0jT8" />

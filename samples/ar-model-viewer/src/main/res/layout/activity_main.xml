@@ -78,8 +78,8 @@
     <!-- Vertical Scale Slider -->
     <LinearLayout
         android:id="@+id/sliderContainer"
-        android:layout_width="wrap_content"
-        android:layout_height="250dp"
+        android:layout_width="70dp"
+        android:layout_height="339dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/bg_black_transparent_rounded"
         android:gravity="center"
@@ -108,9 +108,9 @@
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:src="@drawable/ic_settings"
             android:scaleX="0.7"
             android:scaleY="0.7"
+            android:src="@drawable/ic_settings"
             app:tint="@android:color/white" />
 
     </LinearLayout>

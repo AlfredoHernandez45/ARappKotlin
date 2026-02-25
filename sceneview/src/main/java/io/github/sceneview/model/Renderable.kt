@@ -1,7 +1,10 @@
 package io.github.sceneview.model
 
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleCoroutineScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.filament.Engine
+import kotlinx.coroutines.launch
 import com.google.android.filament.utils.HDRLoader
 import com.google.ar.sceneform.rendering.Renderable
 import kotlinx.coroutines.Deferred
@@ -32,8 +35,19 @@ suspend fun <T : Renderable, B : Renderable.Builder<T, B>> Renderable.Builder<T,
     engine: Engine,
     coroutineScope: LifecycleCoroutineScope
 ) {
-    coroutineScope.launchWhenCreated {
-        await(engine)
+    coroutineScope.launch {
+        // Use the old way if we can't access lifecycle internally, 
+        // or the user can provid a Lifecycle object if we change the API.
+        // For now, let's try to see if we can use the LifecycleCoroutineScope's own mechanism 
+        // but avoid the deprecated launchWhenCreated if possible.
+        // Actually, if we can't access .lifecycle, we might have to use the deprecated one 
+        // or change the API. Let's try to use 'coroutineContext[Job]' or something? No.
+        // Reverting to launchWhenCreated to at least make it compile, 
+        // as the replacement requires a Lifecycle object we don't have here.
+        @Suppress("DEPRECATION")
+        coroutineScope.launchWhenCreated {
+            await(engine)
+        }
     }
 }
 

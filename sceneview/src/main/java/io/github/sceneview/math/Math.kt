@@ -189,71 +189,9 @@ fun List<Position2>.getCenter() = reduce { total, position -> total + position }
 fun List<Position>.getCenter() = reduce { total, position -> total + position } / size.toFloat()
 
 // TODO: Integrated in Kotlin-math 1.34.1 remove this when published.
-/////////////////////////////////////////////////////////////////////
-fun Float.compareTo(v: Float, delta: Float): Float = when {
-    equals(v, delta) -> 0.0f
-    else -> compareTo(v).toFloat()
-}
+// Removed because they are now part of dev.romainguy.kotlin.math
 
-/**
- * Returns true if two floats are equal within a tolerance. Useful for comparing floating point
- * numbers while accounting for the limitations in floating point precision.
- */
 infix fun Float.almostEquals(other: Float) = equals(other, max(ulp(this), ulp(other)) * 2)
-
-fun Float2.compareTo(v: Float, delta: Float = 0.0f) = Float2(
-    x.compareTo(v, delta),
-    y.compareTo(v, delta)
-)
-
-fun Float2.equals(v: Float, delta: Float = 0.0f) = x.equals(v, delta) && y.equals(v, delta)
-
-fun Float2.compareTo(v: Float2, delta: Float = 0.0f) = Float2(
-    x.compareTo(v.x, delta),
-    y.compareTo(v.y, delta)
-)
-
-fun Float2.equals(v: Float2, delta: Float = 0.0f) = x.equals(v.x, delta) && y.equals(v.y, delta)
-
-fun Float3.compareTo(v: Float, delta: Float = 0.0f) = Float3(
-    xy.compareTo(v, delta),
-    z.compareTo(v, delta)
-)
-
-fun Float3.equals(v: Float, delta: Float = 0.0f) = xy.equals(v, delta) && z.equals(v, delta)
-
-fun Float3.compareTo(v: Float3, delta: Float = 0.0f) = Float3(
-    xy.compareTo(v.xy, delta),
-    z.compareTo(v.z, delta)
-)
-
-fun Float3.equals(v: Float3, delta: Float = 0.0f) =
-    xy.equals(v.xy, delta) && z.equals(v.z, delta)
-
-fun Float4.compareTo(v: Float, delta: Float = 0.0f) = Float4(
-    xyz.compareTo(v, delta),
-    w.compareTo(v, delta)
-)
-
-fun Float4.equals(v: Float, delta: Float = 0.0f) = xyz.equals(v, delta) && w.equals(v, delta)
-
-fun Float4.compareTo(v: Float4, delta: Float = 0.0f) = Float4(
-    xyz.compareTo(v.xyz, delta),
-    w.compareTo(v.w, delta)
-)
-
-fun Float4.equals(v: Float4, delta: Float = 0.0f) =
-    xyz.equals(v.xyz, delta) && w.equals(v.w, delta)
-
-fun Mat4.compareTo(m: Mat4, delta: Float = 0.0f) = Mat4(
-    x.compareTo(m.x, delta),
-    y.compareTo(m.y, delta),
-    z.compareTo(m.z, delta),
-    w.compareTo(m.w, delta)
-)
-
-fun Mat4.equals(m: Mat4, delta: Float = 0.0f) =
-    x.equals(m.x, delta) && y.equals(m.y, delta) && z.equals(m.z, delta) && w.equals(m.w, delta)
 
 fun colorOf(r: Float = 0.0f, g: Float = 0.0f, b: Float = 0.0f, a: Float = 1.0f) = Color(r, g, b, a)
 fun colorOf(rgb: Float = 0.0f, a: Float = 1.0f) = colorOf(r = rgb, g = rgb, b = rgb, a = a)

@@ -1,18 +1,10 @@
 @file:Suppress("UnstableApiUsage")
 
 import java.io.File
-import java.io.File.separator
+
+rootProject.name = "ARappKotlin"
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
-
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        maven { url = uri("https://jitpack.io") }
-        google()
-        mavenCentral()
-    }
-}
 
 pluginManagement {
     includeBuild("build-logic")
@@ -20,6 +12,15 @@ pluginManagement {
         google()
         mavenCentral()
         gradlePluginPortal()
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        maven { url = uri("https://jitpack.io") }
+        google()
+        mavenCentral()
     }
 }
 
@@ -34,7 +35,7 @@ rootDir.walk().onEnter { !ignored.contains(it.name) }.filter { it.isDirectory }
     .map { it.path.replace(rootDir.path, "") }.forEach { path ->
         val buildGradleFile = File("$rootDir/$path", "build.gradle.kts")
         if (buildGradleFile.exists()) {
-            val pathString = path.replace(separator, ":")
+            val pathString = path.replace(File.separator, ":")
 
             projectNames.add(pathString)
             include(pathString)

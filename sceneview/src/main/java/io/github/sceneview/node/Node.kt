@@ -41,7 +41,6 @@ import io.github.sceneview.math.Position
 import io.github.sceneview.math.Rotation
 import io.github.sceneview.math.Scale
 import io.github.sceneview.math.Transform
-import io.github.sceneview.math.equals
 import io.github.sceneview.math.quaternion
 import io.github.sceneview.math.slerp
 import io.github.sceneview.math.times
@@ -76,7 +75,7 @@ import kotlin.reflect.KProperty1
  */
 open class Node(
     val engine: Engine,
-    @FilamentEntity val entity: Entity = EntityManager.get().create(),
+    @param:FilamentEntity val entity: Entity = EntityManager.get().create(),
 ) : GestureDetector.OnGestureListener,
     OnDoubleTapListener,
     OnContextClickListener,

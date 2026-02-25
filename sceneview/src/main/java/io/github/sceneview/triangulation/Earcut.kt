@@ -442,7 +442,7 @@ object Earcut {
         do {
             var b: VertexIndex? = a!!.next.next
             while (b !== a!!.prev) {
-                if (a!!.i != b!!.i && isValidDiagonal(a, b)) {
+                if (a.i != b!!.i && isValidDiagonal(a, b)) {
                     // split the polygon in two by the diagonal
                     var c: VertexIndex? = splitPolygon(a, b)
 
@@ -457,7 +457,7 @@ object Earcut {
                 }
                 b = b.next
             }
-            a = a!!.next
+            a = a.next
         } while (a !== start)
     }
 
@@ -643,7 +643,7 @@ object Earcut {
 
                     if (tail != null) tail.nextZ = e else list = e
 
-                    e!!.prevZ = tail
+                    e.prevZ = tail
                     tail = e
                 }
 
@@ -917,11 +917,11 @@ object Earcut {
         triangles: List<Int>
     ): Double {
         val hasHoles = holeIndices != null && holeIndices.isNotEmpty()
-        val outerLen = if (hasHoles) holeIndices!![0] * dim else data.size
+        val outerLen = if (hasHoles) holeIndices[0] * dim else data.size
 
         var polygonArea: Double = abs(signedArea(data, 0, outerLen, dim))
         if (hasHoles) {
-            val len = holeIndices!!.size
+            val len = holeIndices.size
             for (i in 0 until len) {
                 val start = holeIndices[i] * dim
                 val end = if (i < len - 1) holeIndices[i + 1] * dim else data.size

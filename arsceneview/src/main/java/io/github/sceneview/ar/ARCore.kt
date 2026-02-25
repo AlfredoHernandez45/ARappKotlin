@@ -273,5 +273,4 @@ fun TrackingFailureReason.getDescription(context: Context) = when (this) {
     TrackingFailureReason.EXCESSIVE_MOTION -> context.getString(R.string.sceneview_excessive_motion_message)
     TrackingFailureReason.INSUFFICIENT_FEATURES -> context.getString(R.string.sceneview_insufficient_features_message)
     TrackingFailureReason.CAMERA_UNAVAILABLE -> context.getString(R.string.sceneview_camera_unavailable_message)
-    else -> context.getString(R.string.sceneview_unknown_tracking_failure, this)
 }
